@@ -5,7 +5,7 @@ const path = require('path')
 const db = require('../config/db')
 var resultsjson
 // Using pg DataBase
-db.query("SELECT * FROM product ORDER BY id ASC", (error, results) =>{
+db.query("SELECT * FROM product ORDER BY ID ASC", (error, results) =>{
     if(error){
         console.log(error)
         return;
@@ -20,7 +20,7 @@ const product_name = "Sang"
 const category = "1"
 const price = 1000
 const descriptions = "Postgres Database"
-db.query("INSERT INTO product (Id, product_name, category, price, descriptions) VALUES ($1, $2, $3, $4, $5)",
+db.query("INSERT INTO product (ID, proname, procate, proprice, prodes) VALUES ($1, $2, $3, $4, $5)",
 [Id, product_name, category, price, descriptions],
 (error, results) => {
     if(error){
