@@ -56,6 +56,12 @@ app.get('/', function(req, res){
 app.get('/listcustomer', function(req, res){
     res.render('listcustomer')
 })
+app.get('/listorder', function(req, res){
+    res.render('listorder')
+})
+app.get('/listproduct', function(req, res){
+    res.render('listproduct')
+})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server Start Successfully')
