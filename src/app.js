@@ -53,6 +53,9 @@ app.use(express.static('public'))
 app.get('/', function(req, res){
     res.render('home', {product: resultsjson})
 })
+app.get('/listcustomer', function(req, res){
+    res.render('listcustomer')
+})
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server Start Successfully')
