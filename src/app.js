@@ -5,7 +5,7 @@ const path = require('path')
 const db = require('../config/db')
 var resultsjson
 // Using pg DataBase
-db.query("SELECT * FROM product ORDER BY id ASC", (error, results) =>{
+db.query("SELECT * FROM product ORDER BY Id ASC", (error, results) =>{
     if(error){
         console.log(error)
         return;
