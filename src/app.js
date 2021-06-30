@@ -65,7 +65,7 @@ app.get('/addorder', function(req, res){
 app.get('/listorder', function(req, res){
     res.render('listorder')
 })
-app.set('/addproduct', function(req,res){
+app.get('/addproduct', function(req,res){
     res.render('addproduct')
 })
 app.get('/listproduct', function(req, res){
