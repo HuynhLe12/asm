@@ -53,11 +53,20 @@ app.use(express.static('public'))
 app.get('/', function(req, res){
     res.render('home', {product: resultsjson})
 })
+app.get('/addcustomer', function(req, res){
+    res.render('addcustomer')
+})
 app.get('/listcustomer', function(req, res){
     res.render('listcustomer')
 })
+app.get('/addorder', function(req, res){
+    res.render('addorder')
+})
 app.get('/listorder', function(req, res){
     res.render('listorder')
+})
+app.set('/addproduct', function(req,res){
+    res.render('addproduct')
 })
 app.get('/listproduct', function(req, res){
     res.render('listproduct')
