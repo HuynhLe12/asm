@@ -85,14 +85,14 @@ app.post('/addproduct', function(req,res){
         if(error){
             console.log(error)
             return;
-        }
+        }s
         console.log(results)
         }
     )
     res.redirect('/')
 })
 app.get('/listproduct', function(req, res){
-    res.render('listproduct')
+    res.render('listproduct', {product: resultsjson})
 })
 
 app.listen(process.env.PORT || 3000, () => {
