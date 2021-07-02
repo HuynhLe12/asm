@@ -16,7 +16,8 @@
         }}'>
         <thead>
           <tr>
-            <th data-breakpoints="xs">ID</th>
+            <th data-breakpoints="xs">NO</th>
+            <th>Product ID </th>
             <th>Product Name</th>
             <th>Product Price</th>
             <th>Category</th>        
@@ -26,6 +27,7 @@
         <tbody>
           {{#each product}}
           <tr data-expanded="true">
+            <th scope="row">{{sum @index 1}}</th>
             <td>{{this.id}}</td>
             <td>{{this.product_name}}</td>
             <td>{{this.price}}</td>
