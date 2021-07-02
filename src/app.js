@@ -89,7 +89,7 @@ app.post('/addproduct', function(req,res){
         console.log(results)
         }
     )
-    res.redirect('/')
+    res.redirect('/listproduct')
 })
 app.get('/listproduct', function(req, res){
     res.render('listproduct', {product: resultsjson})
