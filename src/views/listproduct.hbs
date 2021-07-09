@@ -31,8 +31,16 @@
             <td>{{this.id}}</td>
             <td>{{this.product_name}}</td>
             <td>{{this.price}}</td>
-            <td>{{this.category}}</td>
+            <td>{{this.cate_name}}</td>
             <td>{{this.descriptions}}</td>
+            <td>
+              <a href="/updateproduct/{{this.id}}" class="active" ui-toggle-class="">
+                <i class="fa fa-pencil-square-o text-success text-active"></i>
+              </a>
+              <a href="/deleteproduct/{{this.id}}" class="active" ui-toggle-class="">
+                <i class="fa fa-times text-danger text"></i>
+              </a>
+            </td>
           </tr>
           {{/each}}
         </tbody>

@@ -1,0 +1,58 @@
+<div class="row">
+        <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Add Products
+            </header>
+            {{#each product}}
+            <div class="panel-body">
+                <form class="form-horizontal bucket-form" method="POST" action="/updateproduct/{{this.id}}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Product Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="proname" value="{{this.product_name}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Product ID</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="proid" value="{{this.id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Product Price</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="proprice" value="{{this.price}}">
+                        </div>
+                    </div>
+                    {{/each}}
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Category</label>
+                        <div class="col-sm-6">
+                            <select name="procategory" class="form-control m-bot15">
+                                {{#each category}}
+                                <option value="{{this.cateid}}">{{this.cate_name}}</option>
+                                 {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    {{#each product}}
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Product Description</label>
+                        <div class="col-sm-6">
+                            <textarea rows="10px" class="form-control" name="prodes">{{this.descriptions}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+        
+                </form>
+            </div>
+            {{/each}}
+        </section>
+    </div>
+</div>  

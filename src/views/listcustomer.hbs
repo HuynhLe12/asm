@@ -16,6 +16,7 @@
         }}'>
         <thead>
           <tr>
+            <th data-breakpoints="xs">NO</th>
             <th data-breakpoints="xs">ID</th>
             <th> Name</th>
             <th>Phone</th>
@@ -25,70 +26,24 @@
           </tr>
         </thead>
         <tbody>
+          {{#each customer}}
           <tr data-expanded="true">
-            <td>1</td>
-            <td>Dennise</td>
-            <td>Fuhrman</td>
-            <td>High School History Teacher</td>
-            
-            <td>July 25th 1960</td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.cusid}}</td>
+            <td>{{this.cus_name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone}}</td>
+            <td>{{this.address }}</td>
+            <td>
+              <a href="/updatecustomer/{{this.cusid}}" class="active" ui-toggle-class="">
+                <i class="fa fa-pencil-square-o text-success text-active"></i>
+              </a>
+              <a href="/deletecustomer/{{this.cusid}}" class="active" ui-toggle-class="">
+                <i class="fa fa-times text-danger text"></i>
+              </a>
+            </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Elodia</td>
-            <td>Weisz</td>
-            <td>Wallpaperer Helper</td>
-          
-            <td>March 30th 1982</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Raeann</td>
-            <td>Haner</td>
-            <td>Internal Medicine Nurse Practitioner</td>
-           
-            <td>February 26th 1966</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Junie</td>
-            <td>Landa</td>
-            <td>Offbearer</td>
-           
-            <td>March 29th 1966</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Solomon</td>
-            <td>Bittinger</td>
-            <td>Roller Skater</td>
-           
-            <td>September 22nd 1964</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Bar</td>
-            <td>Lewis</td>
-            <td>Clown</td>
-           
-            <td>August 4th 1991</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Usha</td>
-            <td>Leak</td>
-            <td>Ships Electronic Warfare Officer</td>
-          
-            <td>November 20th 1979</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Lorriane</td>
-            <td>Cooke</td>
-            <td>Technical Services Librarian</td>
-           
-            <td>April 7th 1969</td>
-          </tr>
+          {{/each}}
         </tbody>
       </table>
     </div>

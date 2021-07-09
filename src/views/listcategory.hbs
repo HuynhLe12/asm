@@ -1,0 +1,46 @@
+<div class="table-agile-info">
+ <div class="panel panel-default">
+    <div class="panel-heading">
+     List of Category
+    </div>
+    <div>
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">NO</th>
+            <th>Category ID </th>
+            <th>Category Name</th>
+            <th>Modify Date</th>        
+          </tr>
+        </thead>
+        <tbody>
+          {{#each category}}
+          <tr data-expanded="true">
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.cateid}}</td>
+            <td>{{this.cate_name}}</td>
+            <td>{{this.date}}</td>
+            <td>
+              <a href="/updatecategory/{{this.cateid}}" class="active" ui-toggle-class="">
+                <i class="fa fa-pencil-square-o text-success text-active"></i>
+              </a>
+              <a href="/deletecategory/{{this.cateid}}" class="active" ui-toggle-class="">
+                <i class="fa fa-times text-danger text"></i>
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+        <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Add Category
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal bucket-form" method="POST" action="/addcategory">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Category Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="catename">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Category ID</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="cateid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Date</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="catedate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label style="color: red;">{{status}}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>  
