@@ -1,3 +1,4 @@
+const { throws } = require('assert')
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
@@ -74,12 +75,99 @@ app.post('/updatecustomer/:cusid', function(req,res){
     
 })
 
+
 /*--------------------------------------------*/
-app.get('/addorder', function(req, res){
-    res.render('addorder')
-})
+//order
 app.get('/listorder', function(req, res){
-    res.render('listorder')
+    db.query(`SELECT * FROM orders INNER JOIN order_detail ON orders.orderid = order_detail.order_id ORDER BY orderid ASC  `,
+    (error, results3) => {
+        if(error){
+            console.log(error)
+        }
+        res.render('listorder', {orders: results3.rows})
+    })   
+})
+app.get('/addorder', function(req, res){
+    db.query(`SELECT * FROM product ORDER BY id ASC `,
+    (error, results) => {
+        if(error){
+            console.log(error)
+        }
+        res.render('addorder', {product: results.rows})
+    })
+})
+app.post('/addorder', function(req,res){
+
+    const orderid = req.body.orderid
+    const cusname = req.body.cusname
+    const phone = req.body.phone
+    const address = req.body.address
+    const quantity = req.body.quantity
+    const proid = req.body.proid
+    // INSERT
+    db.query(`SELECT * FROM orders WHERE orderid = '${req.body.orderid}'`,
+        (error, results4) => {
+        if(error){
+            console.log(error)
+        }
+        console.log('RESULT4' + results4)
+        console.log(results4.rows)
+        if(results4.rows[0] == null){
+            db.query("INSERT INTO orders (orderid, name, phone, address) VALUES ($1, $2, $3, $4)",
+            [orderid, cusname, phone, address],
+            (error, results) => {
+            if(error) throw error
+                db.query(`SELECT price FROM product WHERE id = '${req.body.proid}'`, (error, results2) => {
+                if(error){
+                    console.log(error)
+                }
+                console.log(results2.rows)
+                console.log(quantity)
+                const total = results2.rows[0].price * quantity
+                console.log(total)
+            
+                    db.query("INSERT INTO order_detail (proid, quantity, order_id, totaldetail) VALUES ($1, $2, $3, $4)", 
+                    [proid, quantity, orderid, total ], (error) => {
+                        if(error){
+                            console.log(error)
+                        }
+                        res.render('addorder', {status: 'success!'})
+                        
+                    })
+                })
+            })
+ 
+        }else{
+            db.query(`SELECT price FROM product WHERE id = '${req.body.proid}'`, (error, results2) => {
+                if(error){
+                    console.log(error)
+                }
+                console.log(results2.rows)
+                console.log(quantity)
+                const total = results2.rows[0].price * quantity
+                console.log(total)
+            
+                db.query("INSERT INTO order_detail (proid, quantity, order_id, totaldetail) VALUES ($1, $2, $3, $4)", 
+                [proid, quantity, orderid, total ], (error) => {
+                    if(error){
+                        console.log(error)
+                    }
+                    res.render('addorder', {status: 'success!'})
+                    
+                })
+            })
+        }
+        
+    })
+    
+})
+app.get('/deleteorder/:orderid', function(req, res){
+    var id = req.params.orderid
+    db.query("DELETE FROM order_detail WHERE order_id = $1",
+    [id], (error) =>{
+        if(error) throw error
+        res.redirect('/listorder')
+    })  
 })
 
 

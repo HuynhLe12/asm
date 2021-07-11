@@ -1,56 +1,54 @@
-<div class="row">
-        <div class="col-lg-12">
-        <section class="panel">
-            <header class="panel-heading">
-                Add Orders
-            </header>
-            <div class="panel-body">
-                <form class="form-horizontal bucket-form" method="get">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product Name</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product ID</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product Image</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product Quantity</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product Price</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Category</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Product Description</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-        </section>
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <header class="panel-heading">
+            View invoices
+        </header>
+        <div>
+            <table class="table" ui-jq="footable" ui-options='{
+                "paging": {
+                "enabled": true
+                },
+                "filtering": {
+                "enabled": true
+                },
+                "sorting": {
+                "enabled": true
+                }}'>
+                <thead>
+                <tr>
+                    <th data-breakpoints="xs">NO</th>
+                    <th data-breakpoints="xs">ID</th>
+                    <th>Customer Name</th>
+                    <th>Phone</th>
+                    <th data-breakpoints="xs sm md" data-title="DOB">Address</th>
+                    <th data-breakpoints="xs">Product</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>    
+                    {{#each orders}}
+                    <tr data-expanded="true">
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td>{{this.orderid}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.phone}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.proid}}</td>
+                        <td>{{this.quantity}}</td>
+                        <td>{{this.totaldetail}}</td>
+                        <td>
+                        <a href="/deleteorder/{{this.orderid}}" class="active" ui-toggle-class="" onclick="return confirm('Are you sure you want to delete this item?');">
+                            <i class="fa fa-times text-danger text"></i>
+                        </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            
+        </div>
+        
     </div>
-</div>  
+</div>    
